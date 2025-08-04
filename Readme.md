@@ -1,4 +1,4 @@
-# 📰 Fake News Feed App (React + Hooks)
+# 📰 Newsgram
 
 ## 📌 Project Overview
 This project is a **Fake News Feed Application** built using **React Functional Components** and **Hooks**. It simulates a real-time social media/news feed experience using data from a fake REST API.
