@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# 📰 Newsgram
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 📌 Project Overview
+This project is a **Fake News Feed Application** built using **React Functional Components** and **Hooks**. It simulates a real-time social media/news feed experience using data from a fake REST API.
 
-## Available Scripts
+Users can interact with the posts through likes, comments, and bookmarks, with features like infinite scroll, filtering, dark mode, and responsive design.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🔧 Tech Stack
+- React (Functional Components + Hooks)
+- JavaScript (ES6+)
+- Fake REST API using `json-server` or JSONPlaceholder
+- LocalStorage (for theme and bookmarks)
+- CSS or Tailwind CSS for styling
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🧩 Key Features
+- **Post Feed**: Display posts with pagination
+- **Infinite Scroll**: Automatically loads more posts on scroll
+- **Search & Filter**: Filter posts by title, content, tags, or author
+- **Like & Bookmark**: Interactive buttons with local state or localStorage sync
+- **Post Modal**: View full post and comments in a modal
+- **Comment Section**: Display and add mock comments
+- **Dark Mode**: Toggle between light and dark themes
+- **Sorting**: Sort posts by date, likes, or alphabetically
+- **Responsive UI**: Mobile-friendly layout and styling
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📁 Project Structure (Simplified)
+- **components/**: UI components (PostCard, Modal, Search, etc.)
+- **hooks/**: Custom hooks for fetching and scrolling
+- **context/**: Theme context for dark mode
+- **pages/**: Main application page
+- **App.jsx**: App entry point
+- **index.js**: ReactDOM rendering
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 💡 Concepts Demonstrated
+- React Hooks: `useState`, `useEffect`, `useRef`, `useContext`, `useCallback`
+- API integration with `fetch` or `axios`
+- State management and UI interactions
+- Client-side search and filtering
+- Local storage integration
+- Responsive design principles
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🔚 Conclusion
+This app demonstrates a practical and interactive front-end project using React. It mimics real-world social media functionality and helps reinforce concepts such as hooks, data fetching, state management, and UI/UX patterns.
