@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 const PostCard = ({ post }) => {
-  // Local state for like count and liked status
   const [likes, setLikes] = useState(post.initialLikes);
   const [isLiked, setIsLiked] = useState(false);
 
