@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useFetchPosts from "./hooks/useFetchPosts";
 import useInfiniteScroll from "./hooks/useInfiniteScroll";
-import LoadingSkeleton from "./components/LoadingSkeleton";
+import PostList from "./components/PostList";
 
 const App = () => {
   const [page, setPage] = useState(1);
@@ -10,27 +10,22 @@ const App = () => {
 
   const lastPostRef = useInfiniteScroll(loading, hasMore, loadMore);
 
+  // Add a random initial like count and a creation date to each post once fetched
+  const postsWithMetaData = posts.map(post => ({
+    ...post,
+    initialLikes: post.initialLikes || Math.floor(Math.random() * 100),
+    createdDate: post.createdDate || new Date(),
+  }));
+
   return (
-    <div style={{ padding: 20 }}>
+    <div className="app-container">
       <h2>📚 Infinite Posts</h2>
-      {posts.map((post, index) => {
-        if (index === posts.length - 1) {
-          return (
-            <div ref={lastPostRef} key={post.id}>
-              <h3>{post.title}</h3>
-              <p>{post.body}</p>
-            </div>
-          );
-        } else {
-          return (
-            <div key={post.id}>
-              <h3>{post.title}</h3>
-              <p>{post.body}</p>
-            </div>
-          );
-        }
-      })}
-      {loading && <LoadingSkeleton />}
+      <PostList 
+        posts={postsWithMetaData} 
+        loading={loading} 
+        lastPostRef={lastPostRef} 
+        hasMore={hasMore} 
+      />
     </div>
   );
 };
