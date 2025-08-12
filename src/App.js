@@ -10,22 +10,24 @@ const App = () => {
   const [page, setPage] = useState(1);
   const [selectedPost, setSelectedPost] = useState(null);
   const [isPostDetailsOpen, setIsPostDetailsOpen] = useState(false);
+  const [refreshKey, setRefreshKey] = useState(0);
+  const [localPosts, setLocalPosts] = useState([]);
   
-  const { posts, loading, hasMore } = useFetchPosts(page, 5);
+  const { posts, loading, hasMore } = useFetchPosts(page, 20, refreshKey);
   const loadMore = () => setPage((prev) => prev + 1);
 
   const lastPostRef = useInfiniteScroll(loading, hasMore, loadMore);
 
   // Add a random initial like count and a creation date to each post once fetched
-  const postsWithMetaData = posts.map(post => ({
+  const postsWithMetaData = [...localPosts, ...posts].map(post => ({
     ...post,
     initialLikes: post.initialLikes || Math.floor(Math.random() * 100),
     createdDate: post.createdDate || new Date(),
   }));
 
   // Extract unique tags and authors for filtering
-  const tags = [...new Set(posts.flatMap(post => post.tags || []))];
-  const authors = [...new Set(posts.map(post => post.author))];
+  const tags = [...new Set(postsWithMetaData.flatMap(post => post.tags || []))];
+  const authors = [...new Set(postsWithMetaData.map(post => post.author))];
 
   const handlePostClick = (post) => {
     setSelectedPost(post);
@@ -35,6 +37,21 @@ const App = () => {
   const handleClosePostDetails = () => {
     setIsPostDetailsOpen(false);
     setSelectedPost(null);
+  };
+
+  const handlePostAdded = (newPost) => {
+    // Add the new post to the beginning of local posts
+    const postWithMetadata = {
+      ...newPost,
+      initialLikes: 0,
+      createdDate: new Date(),
+    };
+    
+    setLocalPosts(prev => [postWithMetadata, ...prev]);
+    
+    // Also refresh the API posts to ensure consistency
+    setRefreshKey(prev => prev + 1);
+    setPage(1);
   };
 
   return (
@@ -65,6 +82,7 @@ const App = () => {
           tags={tags} 
           authors={authors}
           onPostClick={handlePostClick}
+          onPostAdded={handlePostAdded}
         />
       ) : (
         <div className="feed-container">
@@ -75,6 +93,7 @@ const App = () => {
             lastPostRef={lastPostRef} 
             hasMore={hasMore}
             onPostClick={handlePostClick}
+            onLoadMore={loadMore}
           />
         </div>
       )}

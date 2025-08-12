@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PostCard from './PostCard';
 import LoadingSkeleton from './LoadingSkeleton';
 
-const PostList = ({ posts, loading, lastPostRef, hasMore, onPostClick }) => {
+const PostList = ({ posts, loading, lastPostRef, hasMore, onPostClick, onLoadMore }) => {
   const [sortOrder, setSortOrder] = useState('recent'); // Default sorting
 
   const handleSort = (order) => {
@@ -41,14 +41,40 @@ const PostList = ({ posts, loading, lastPostRef, hasMore, onPostClick }) => {
           Alphabetical
         </button>
       </div>
+      
       {sortedPosts.map((post, index) => {
         if (sortedPosts.length === index + 1) {
           return <PostCard ref={lastPostRef} key={post.id} post={post} onClick={onPostClick} />;
         }
         return <PostCard key={post.id} post={post} onClick={onPostClick} />;
       })}
+      
       {loading && <LoadingSkeleton />}
-      {!hasMore && !loading && <p className="end-of-posts-message">You have reached the end of the posts.</p>}
+      
+      {!loading && hasMore && (
+        <div className="load-more-section">
+          <button 
+            className="load-more-btn"
+            onClick={onLoadMore}
+          >
+            📚 Load More Posts
+          </button>
+        </div>
+      )}
+      
+      {!hasMore && !loading && sortedPosts.length > 0 && (
+        <div className="end-of-posts-message">
+          <p>🎉 You've reached the end of all posts!</p>
+          <p>Total posts: {sortedPosts.length}</p>
+        </div>
+      )}
+      
+      {!loading && sortedPosts.length === 0 && (
+        <div className="no-posts-message">
+          <p>📭 No posts found</p>
+          <p>Try adjusting your filters or create a new post!</p>
+        </div>
+      )}
     </div>
   );
 };

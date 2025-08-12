@@ -4,13 +4,15 @@ import SearchBar from '../components/SearchBar';
 import FilterPanel from '../components/FilterPanel';
 import BookmarkToggle from '../components/BookmarkToggle';
 import PostList from '../components/PostList';
+import AddPost from '../components/AddPost';
 import { getBookmarks } from '../utils/bookmarkUtils';
 
-export default function Home({ posts, tags, authors, loading = false, hasMore = false, lastPostRef = null, onPostClick }) {
+export default function Home({ posts, tags, authors, loading = false, hasMore = false, lastPostRef = null, onPostClick, onPostAdded }) {
   const [query, setQuery] = useState('');
   const [selectedTag, setSelectedTag] = useState('');
   const [selectedAuthor, setSelectedAuthor] = useState('');
   const [showOnlyBookmarked, setShowOnlyBookmarked] = useState(false);
+  const [isAddPostOpen, setIsAddPostOpen] = useState(false);
 
   const filtered = useMemo(() => {
     return posts.filter(post => {
@@ -23,6 +25,12 @@ export default function Home({ posts, tags, authors, loading = false, hasMore = 
     });
   }, [posts, query, selectedTag, selectedAuthor, showOnlyBookmarked]);
 
+  const handlePostAdded = (newPost) => {
+    if (onPostAdded) {
+      onPostAdded(newPost);
+    }
+  };
+
   return (
     <div className="home-container">
       <div className="home-header">
@@ -31,7 +39,16 @@ export default function Home({ posts, tags, authors, loading = false, hasMore = 
       </div>
       
       <div className="controls-section">
-        <SearchBar query={query} onSearch={setQuery} />
+        <div className="controls-top">
+          <SearchBar query={query} onSearch={setQuery} />
+          <button 
+            className="add-post-btn"
+            onClick={() => setIsAddPostOpen(true)}
+          >
+            ✍️ Add Post
+          </button>
+        </div>
+        
         <FilterPanel
           tags={tags}
           authors={authors}
@@ -71,6 +88,18 @@ export default function Home({ posts, tags, authors, loading = false, hasMore = 
         hasMore={hasMore}
         lastPostRef={lastPostRef}
         onPostClick={onPostClick}
+        onLoadMore={() => {
+          // For Home page, we could implement a different load more logic
+          // For now, just show a message that all posts are loaded
+          console.log('All posts loaded on Home page');
+        }}
+      />
+
+      {/* Add Post Modal */}
+      <AddPost
+        isOpen={isAddPostOpen}
+        onClose={() => setIsAddPostOpen(false)}
+        onPostAdded={handlePostAdded}
       />
     </div>
   );
