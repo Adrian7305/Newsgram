@@ -6,7 +6,7 @@ export default function SearchBar({ query, onSearch }) {
     <input
       type="text"
       placeholder="Search by title or content..."
-      className="p-2 border rounded w-full mb-4"
+      className="search-bar"
       value={query}
       onChange={(e) => onSearch(e.target.value)}
     />

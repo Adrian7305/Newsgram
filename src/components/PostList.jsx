@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PostCard from './PostCard';
 import LoadingSkeleton from './LoadingSkeleton';
 
-const PostList = ({ posts, loading, lastPostRef, hasMore }) => {
+const PostList = ({ posts, loading, lastPostRef, hasMore, onPostClick }) => {
   const [sortOrder, setSortOrder] = useState('recent'); // Default sorting
 
   const handleSort = (order) => {
@@ -22,15 +22,30 @@ const PostList = ({ posts, loading, lastPostRef, hasMore }) => {
   return (
     <div className="post-list">
       <div className="sort-buttons">
-        <button onClick={() => handleSort('recent')} className={sortOrder === 'recent' ? 'active' : ''}>Recent</button>
-        <button onClick={() => handleSort('liked')} className={sortOrder === 'liked' ? 'active' : ''}>Liked</button>
-        <button onClick={() => handleSort('alphabetical')} className={sortOrder === 'alphabetical' ? 'active' : ''}>Alphabetical</button>
+        <button 
+          onClick={() => handleSort('recent')} 
+          className={`sort-button ${sortOrder === 'recent' ? 'active' : ''}`}
+        >
+          Recent
+        </button>
+        <button 
+          onClick={() => handleSort('liked')} 
+          className={`sort-button ${sortOrder === 'liked' ? 'active' : ''}`}
+        >
+          Most Liked
+        </button>
+        <button 
+          onClick={() => handleSort('alphabetical')} 
+          className={`sort-button ${sortOrder === 'alphabetical' ? 'active' : ''}`}
+        >
+          Alphabetical
+        </button>
       </div>
       {sortedPosts.map((post, index) => {
         if (sortedPosts.length === index + 1) {
-          return <PostCard ref={lastPostRef} key={post.id} post={post} />;
+          return <PostCard ref={lastPostRef} key={post.id} post={post} onClick={onPostClick} />;
         }
-        return <PostCard key={post.id} post={post} />;
+        return <PostCard key={post.id} post={post} onClick={onPostClick} />;
       })}
       {loading && <LoadingSkeleton />}
       {!hasMore && !loading && <p className="end-of-posts-message">You have reached the end of the posts.</p>}

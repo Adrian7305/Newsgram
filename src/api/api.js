@@ -8,3 +8,8 @@ export const fetchPosts = async (page = 1, limit = 5) => {
   const response = await API.get(`/posts?_page=${page}&_limit=${limit}`);
   return response.data;
 };
+
+export const fetchComments = async (postId) => {
+  const response = await API.get(`/comments?postId=${postId}`);
+  return response.data;
+};

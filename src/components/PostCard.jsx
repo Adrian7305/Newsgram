@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { forwardRef } from 'react';
 
-const PostCard = forwardRef(({ post }, ref) => {
+const PostCard = forwardRef(({ post, onClick }, ref) => {
   const [likes, setLikes] = useState(post.initialLikes);
-  const [dislikes, setDislikes] = useState(post.initialDislikes || 0); // New dislike state
+  const [dislikes, setDislikes] = useState(post.initialDislikes || 0);
   const [isLiked, setIsLiked] = useState(false);
   const [isDisliked, setIsDisliked] = useState(false);
 
-  const handleLike = () => {
+  const handleLike = (e) => {
+    e.stopPropagation(); // Prevent opening modal when clicking like
     if (isLiked) {
       setLikes(likes - 1);
     } else {
       setLikes(likes + 1);
-      // If a user dislikes a post and then likes it, remove the dislike
       if (isDisliked) {
         setDislikes(dislikes - 1);
         setIsDisliked(false);
@@ -21,12 +21,12 @@ const PostCard = forwardRef(({ post }, ref) => {
     setIsLiked(!isLiked);
   };
 
-  const handleDislike = () => {
+  const handleDislike = (e) => {
+    e.stopPropagation(); // Prevent opening modal when clicking dislike
     if (isDisliked) {
       setDislikes(dislikes - 1);
     } else {
       setDislikes(dislikes + 1);
-      // If a user likes a post and then dislikes it, remove the like
       if (isLiked) {
         setLikes(likes - 1);
         setIsLiked(false);
@@ -35,8 +35,14 @@ const PostCard = forwardRef(({ post }, ref) => {
     setIsDisliked(!isDisliked);
   };
 
+  const handleCardClick = () => {
+    if (onClick) {
+      onClick(post);
+    }
+  };
+
   return (
-    <div className="post-card" ref={ref}>
+    <div className="post-card clickable" ref={ref} onClick={handleCardClick}>
       <h3>{post.title}</h3>
       <p>{post.body.slice(0, 100)}...</p>
       <div>
@@ -58,6 +64,7 @@ const PostCard = forwardRef(({ post }, ref) => {
           {isDisliked ? '👎' : '👍'} {dislikes}
         </button>
       </div>
+      <div className="click-hint">Click to view full post →</div>
     </div>
   );
 });

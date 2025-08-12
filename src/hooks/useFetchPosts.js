@@ -10,7 +10,13 @@ const useFetchPosts = (page, limit = 5) => {
     setLoading(true);
     fetchPosts(page, limit)
       .then((newPosts) => {
-        setPosts((prev) => [...prev, ...newPosts]);
+        if (page === 1) {
+          // Reset posts for first page
+          setPosts(newPosts);
+        } else {
+          // Append posts for subsequent pages
+          setPosts((prev) => [...prev, ...newPosts]);
+        }
         setHasMore(newPosts.length === limit);
         setLoading(false);
       })
