@@ -1120,7 +1120,7 @@
 
 /* 🌙 Dark Theme */
 body.dark {
-  background-color: #1e1e1e; /* Greyish dark, not pitch black */
+  background-color: #0a0a0a; /* Even darker background for maximum contrast */
   color: #e0e0e0; /* Soft white text */
   transition: background-color 0.3s, color 0.3s;
 }
@@ -1157,15 +1157,23 @@ body.dark .theme-toggle:hover {
 
 /* Post cards */
 body.dark .post-card {
-  background-color: #2a2a2a;
-  border: 1px solid #444;
+  background-color: #151515;
+  border: 1px solid #2a2a2a;
   color: #f5f5f5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
 }
 body.dark .post-card h3 {
   color: #ffffff;
 }
 body.dark .post-card p {
   color: #d0d0d0;
+}
+/* Fix author and date visibility in dark mode */
+body.dark .post-card > div {
+  color: #e0e0e0 !important;
+}
+body.dark .post-card strong {
+  color: #ffffff !important;
 }
 
 /* Links */
@@ -1186,4 +1194,396 @@ body.dark ::-webkit-scrollbar-thumb {
 }
 body.dark ::-webkit-scrollbar-thumb:hover {
   background: #777;
+}
+
+/* ============================= */
+/* Enhanced Theme + Toggle Styles */
+/* ============================= */
+html.theme-transition *,
+html.theme-transition body {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+/* Beautiful Theme Toggle */
+.theme-toggle-btn {
+  --track-bg: rgba(255, 255, 255, 0.6);
+  --track-border: rgba(255, 255, 255, 0.8);
+  --thumb-bg: #ffffff;
+  --thumb-shadow: rgba(0, 0, 0, 0.2);
+  --label-color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.theme-toggle-btn .toggle-track {
+  width: 56px;
+  height: 28px;
+  background: var(--track-bg);
+  border: 2px solid var(--track-border);
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(6px);
+}
+
+.theme-toggle-btn .toggle-thumb {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 2px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--thumb-bg);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 4px 10px var(--thumb-shadow);
+  transition: left 0.25s ease, transform 0.25s ease;
+  font-size: 14px;
+}
+
+.theme-toggle-btn.dark .toggle-thumb {
+  left: calc(100% - 26px);
+}
+
+.theme-toggle-btn .toggle-label {
+  color: var(--label-color);
+  font-weight: 600;
+}
+
+/* Light context for toggle (on gradient header) */
+body.light .theme-toggle-btn {
+  --track-bg: rgba(255, 255, 255, 0.6);
+  --track-border: rgba(255, 255, 255, 0.85);
+  --thumb-bg: #ffffff;
+  --thumb-shadow: rgba(102, 126, 234, 0.35);
+  --label-color: #ffffff;
+}
+
+/* Dark theme toggle colors */
+body.dark .theme-toggle-btn {
+  --track-bg: rgba(255, 255, 255, 0.08);
+  --track-border: rgba(255, 255, 255, 0.15);
+  --thumb-bg: #0f172a;
+  --thumb-shadow: rgba(0, 0, 0, 0.6);
+  --label-color: #e5e7eb;
+}
+
+/* Glass surfaces adapt in dark mode */
+body.dark .feed-container,
+body.dark .home-container {
+  background: rgba(20, 20, 20, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+}
+
+/* Inputs and selects in dark */
+body.dark .search-bar,
+body.dark .filter-select,
+body.dark .form-input,
+body.dark .form-textarea {
+  background: #121212;
+  color: #e0e0e0;
+  border-color: #333;
+}
+
+/* Info stripes in dark */
+body.dark .results-info {
+  background: rgba(33, 150, 243, 0.12);
+  border-left-color: #64b5f6;
+}
+
+/* Buttons in dark */
+body.dark .interactions button {
+  background: #121212;
+  border-color: #333;
+  color: #e0e0e0;
+}
+
+/* Bookmark notice in dark */
+body.dark .bookmark-toggle {
+  background: rgba(255, 234, 167, 0.08);
+  border-color: rgba(255, 234, 167, 0.25);
+}
+
+/* Modals in dark */
+body.dark .post-details-modal,
+body.dark .add-post-modal {
+  background: rgba(30, 30, 30, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+body.dark .close-button {
+  background: #121212;
+  color: #bbb;
+}
+
+/* ============================= */
+/* Enhanced Theme + Toggle Styles */
+/* ============================= */
+html.theme-transition *,
+html.theme-transition body {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+/* Beautiful Theme Toggle */
+.theme-toggle-btn {
+  --track-bg: rgba(255, 255, 255, 0.6);
+  --track-border: rgba(255, 255, 255, 0.8);
+  --thumb-bg: #ffffff;
+  --thumb-shadow: rgba(0, 0, 0, 0.2);
+  --label-color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.theme-toggle-btn .toggle-track {
+  width: 56px;
+  height: 28px;
+  background: var(--track-bg);
+  border: 2px solid var(--track-border);
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(6px);
+}
+
+.theme-toggle-btn .toggle-thumb {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 2px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--thumb-bg);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 4px 10px var(--thumb-shadow);
+  transition: left 0.25s ease, transform 0.25s ease;
+  font-size: 14px;
+}
+
+.theme-toggle-btn.dark .toggle-thumb {
+  left: calc(100% - 26px);
+}
+
+.theme-toggle-btn .toggle-label {
+  color: var(--label-color);
+  font-weight: 600;
+}
+
+/* Light context for toggle (on gradient header) */
+body.light .theme-toggle-btn {
+  --track-bg: rgba(255, 255, 255, 0.6);
+  --track-border: rgba(255, 255, 255, 0.85);
+  --thumb-bg: #ffffff;
+  --thumb-shadow: rgba(102, 126, 234, 0.35);
+  --label-color: #ffffff;
+}
+
+/* Dark theme toggle colors */
+body.dark .theme-toggle-btn {
+  --track-bg: rgba(255, 255, 255, 0.08);
+  --track-border: rgba(255, 255, 255, 0.15);
+  --thumb-bg: #0f172a;
+  --thumb-shadow: rgba(0, 0, 0, 0.6);
+  --label-color: #e5e7eb;
+}
+
+/* Glass surfaces adapt in dark mode */
+body.dark .feed-container,
+body.dark .home-container {
+  background: rgba(20, 20, 20, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+}
+
+/* Inputs and selects in dark */
+body.dark .search-bar,
+body.dark .filter-select,
+body.dark .form-input,
+body.dark .form-textarea {
+  background: #121212;
+  color: #e0e0e0;
+  border-color: #333;
+}
+
+/* Info stripes in dark */
+body.dark .results-info {
+  background: rgba(33, 150, 243, 0.12);
+  border-left-color: #64b5f6;
+}
+
+/* Buttons in dark */
+body.dark .interactions button {
+  background: #121212;
+  border-color: #333;
+  color: #e0e0e0;
+}
+
+/* Bookmark notice in dark */
+body.dark .bookmark-toggle {
+  background: rgba(255, 234, 167, 0.08);
+  border-color: rgba(255, 234, 167, 0.25);
+}
+
+/* Modals in dark */
+body.dark .post-details-modal,
+body.dark .add-post-modal {
+  background: rgba(30, 30, 30, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Additional dark mode fixes for better visibility */
+body.dark .home-header h2 {
+  color: #ffffff;
+}
+
+body.dark .home-header p {
+  color: #d0d0d0;
+}
+
+body.dark .feed-container h2 {
+  color: #ffffff;
+}
+
+body.dark .controls-section {
+  background: rgba(30, 30, 30, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark .sort-button {
+  background: #1a1a1a;
+  color: #e0e0e0;
+  border-color: #333;
+}
+
+body.dark .sort-button:hover {
+  border-color: #667eea;
+  color: #667eea;
+}
+
+body.dark .sort-button.active {
+  background: #667eea;
+  color: white;
+  border-color: #667eea;
+}
+
+body.dark .end-of-posts-message,
+body.dark .no-posts-message {
+  background: rgba(30, 30, 30, 0.8);
+  color: #d0d0d0;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark .end-of-posts-message p:first-child,
+body.dark .no-posts-message p:first-child {
+  color: #ffffff;
+}
+
+body.dark .load-more-btn {
+  background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+body.dark .load-more-btn:hover {
+  background: linear-gradient(135deg, #5a6c7a 0%, #3d4a5a 100%);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Fix for sort buttons visibility in dark mode */
+body.dark .sort-buttons {
+  background: transparent;
+}
+
+/* Fix for form labels in dark mode */
+body.dark .form-group label {
+  color: #ffffff;
+}
+
+/* Fix for modal headers in dark mode */
+body.dark .modal-header h2 {
+  color: #ffffff;
+}
+
+body.dark .modal-header p {
+  color: #d0d0d0;
+}
+
+/* Fix for post title in modal dark mode */
+body.dark .post-title {
+  color: #ffffff;
+}
+
+body.dark .post-body {
+  color: #d0d0d0;
+}
+
+/* Fix for comments in dark mode */
+body.dark .comment {
+  background: rgba(30, 30, 30, 0.8);
+  border-left-color: #667eea;
+}
+
+body.dark .comment-author {
+  color: #ffffff;
+}
+
+body.dark .comment-content {
+  color: #d0d0d0;
+}
+
+/* Fix for add post button in dark mode */
+body.dark .add-post-btn {
+  background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+body.dark .add-post-btn:hover {
+  background: linear-gradient(135deg, #5a6c7a 0%, #3d4a5a 100%);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Fix for post card metadata visibility */
+body.dark .post-card > div {
+  color: #e0e0e0 !important;
+}
+
+body.dark .post-card strong {
+  color: #ffffff !important;
+}
+
+/* Fix for tags in dark mode */
+body.dark .tag {
+  background: rgba(25, 118, 210, 0.18);
+  color: #90caf9;
+}
+
+/* Fix for interaction buttons in dark mode */
+body.dark .interactions button:hover {
+  background: #1a1a1a;
+  border-color: #555;
+}
+
+/* Fix for click hint in dark mode */
+body.dark .click-hint {
+  background: #4a5568;
+  color: #ffffff;
 }

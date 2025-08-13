@@ -6,7 +6,7 @@ import Home from "./pages/Home";
 import PostDetails from "./components/PostDetails";
 // at top of App.js
 import ThemeToggle from "./components/ThemeToggle";
-import { motion, AnimatePresence } from "framer-motion";
+
 
 
 

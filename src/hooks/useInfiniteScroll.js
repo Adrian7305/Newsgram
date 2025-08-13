@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from "react";
+import { useRef, useCallback } from "react";
 
 const useInfiniteScroll = (loading, hasMore, onLoadMore) => {
   const observerRef = useRef();
