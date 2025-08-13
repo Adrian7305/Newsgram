@@ -1,4 +1,4 @@
-Adrian: API & Data Layer Manager
+Adrian: API , Data Layer Manager, Post modal
 Responsibilities:
 
 Set up json-server with db.json
@@ -11,10 +11,20 @@ Implement infinite scroll logic using IntersectionObserver
 
 Add loading skeletons
 
+Create PostModal.jsx to show full post view
+
+Use react-modal or React Portal
+
+Fetch and render comments with CommentList.jsx
+
+Implement comment add (local only, no API POST)
+
 Files:
 /hooks/useFetchPosts.js
 /hooks/useInfiniteScroll.js
 /db.json
+/components/PostModal.jsx
+/components/CommentList.jsx
 -------------------------------------------------------------------
 Punith: Post Feed & Card UI
 Responsibilities:
@@ -48,27 +58,12 @@ Add bookmark feature with localStorage
 
 “View Bookmarked” toggle
 
+Integrate like/bookmark buttons into modal view
+
 Files:
 /components/SearchBar.jsx
 /components/FilterPanel.jsx
 (localStorage utils if needed)
-------------------------------------------------------------------
-Sai Shravan: Post Modal & Comments
-Responsibilities:
-
-Create PostModal.jsx to show full post view
-
-Use react-modal or React Portal
-
-Fetch and render comments with CommentList.jsx
-
-Implement comment add (local only, no API POST)
-
-Integrate like/bookmark buttons into modal view
-
-Files:
-/components/PostModal.jsx
-/components/CommentList.jsx
 ------------------------------------------------------------------
 Chhavi Sharma: Theme, State Context & Styling
 Responsibilities:
