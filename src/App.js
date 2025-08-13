@@ -4,6 +4,11 @@ import useInfiniteScroll from "./hooks/useInfiniteScroll";
 import PostList from "./components/PostList";
 import Home from "./pages/Home";
 import PostDetails from "./components/PostDetails";
+// at top of App.js
+import ThemeToggle from "./components/ThemeToggle";
+import { motion, AnimatePresence } from "framer-motion";
+
+
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState("home"); // "home" or "feed"
@@ -57,23 +62,29 @@ const App = () => {
   return (
     <div className="app-container">
       {/* Navigation Header */}
-      <div className="nav-header">
-        <h1>📰 Newsgram</h1>
-        <nav className="nav-tabs">
-          <button 
-            className={`nav-tab ${currentPage === "home" ? "active" : ""}`}
-            onClick={() => setCurrentPage("home")}
-          >
-            🏠 Home
-          </button>
-          <button 
-            className={`nav-tab ${currentPage === "feed" ? "active" : ""}`}
-            onClick={() => setCurrentPage("feed")}
-          >
-            📚 Infinite Feed
-          </button>
-        </nav>
-      </div>
+     <div className="nav-header">
+  <h1>📰 Newsgram</h1>
+
+  {/* Theme toggle aligned to the right of header */}
+  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+    <ThemeToggle />
+    <nav className="nav-tabs">
+      <button
+        className={`nav-tab ${currentPage === "home" ? "active" : ""}`}
+        onClick={() => setCurrentPage("home")}
+      >
+        🏠 Home
+      </button>
+      <button
+        className={`nav-tab ${currentPage === "feed" ? "active" : ""}`}
+        onClick={() => setCurrentPage("feed")}
+      >
+        📚 Infinite Feed
+      </button>
+    </nav>
+  </div>
+</div>
+
 
       {/* Page Content */}
       {currentPage === "home" ? (
