@@ -18,7 +18,8 @@ const App = () => {
   const [refreshKey, setRefreshKey] = useState(0);
   const [localPosts, setLocalPosts] = useState([]);
   
-  const { posts, loading, hasMore } = useFetchPosts(page, 20, refreshKey);
+  const itemsPerPage = currentPage === "feed" ? 5 : 20;
+  const { posts, loading, hasMore } = useFetchPosts(page, itemsPerPage, refreshKey);
   const loadMore = () => setPage((prev) => prev + 1);
 
   const lastPostRef = useInfiniteScroll(loading, hasMore, loadMore);
