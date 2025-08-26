@@ -94,6 +94,32 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
+/* Auth Tabs: improve visibility between Login and Sign Up */
+.auth-tabs {
+  gap: 16px;
+}
+.auth-tab {
+  backdrop-filter: blur(12px);
+}
+.auth-tab.active {
+  background: #ffffff;
+  color: #4c5bdc;
+  border-color: #ffffff;
+}
+.auth-tab:not(.active) {
+  background: rgba(0, 0, 0, 0.18);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+body.dark .auth-tab.active {
+  background: #667eea;
+  color: #ffffff;
+  border-color: #667eea;
+}
+body.dark .auth-tab:not(.active) {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
 /* Feed Container */
 .feed-container {
   background: white;

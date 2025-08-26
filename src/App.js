@@ -6,11 +6,14 @@ import Home from "./pages/Home";
 import PostDetails from "./components/PostDetails";
 // at top of App.js
 import ThemeToggle from "./components/ThemeToggle";
+import { useAuth } from "./context/AuthContext";
+import AuthPage from "./pages/AuthPage";
 
 
 
 
 const App = () => {
+  const { isAuthenticated, logout, user } = useAuth();
   const [currentPage, setCurrentPage] = useState("home"); // "home" or "feed"
   const [page, setPage] = useState(1);
   const [selectedPost, setSelectedPost] = useState(null);
@@ -60,6 +63,10 @@ const App = () => {
     setPage(1);
   };
 
+  if (!isAuthenticated) {
+    return <AuthPage />;
+  }
+
   return (
     <div className="app-container">
       {/* Navigation Header */}
@@ -69,6 +76,7 @@ const App = () => {
   {/* Theme toggle aligned to the right of header */}
   <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
     <ThemeToggle />
+    <button className="nav-tab" onClick={logout} title={user?.username ? `Logged in as ${user.username}` : undefined}>🚪 Logout</button>
     <nav className="nav-tabs">
       <button
         className={`nav-tab ${currentPage === "home" ? "active" : ""}`}
