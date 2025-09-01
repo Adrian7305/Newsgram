@@ -1,0 +1,92 @@
+Adrian: API , Data Layer Manager, Post modal
+Responsibilities:
+
+Set up MongoDB backend with Express and Mongoose
+
+Create useFetchPosts.js and useInfiniteScroll.js hooks
+
+Create API utilities using axios or fetch (CRUD if needed)
+
+Implement infinite scroll logic using IntersectionObserver
+
+Add loading skeletons
+
+Create PostModal.jsx to show full post view
+
+Use react-modal or React Portal
+
+Fetch and render comments with CommentList.jsx
+
+Implement comment add (local only, no API POST)
+
+Files:
+/hooks/useFetchPosts.js
+/hooks/useInfiniteScroll.js
+/db.json
+/components/PostModal.jsx
+/components/CommentList.jsx
+-------------------------------------------------------------------
+Punith: Post Feed & Card UI
+Responsibilities:
+
+Build PostCard.jsx and PostList.jsx components
+
+Display post details: title, snippet, tags, author, created date
+
+Implement like button functionality with local state or mock API
+
+Handle sorting (Recent, Liked, Alphabetical)
+
+Files:
+/components/PostCard.jsx
+/components/PostList.jsx
+------------------------------------------------------------------
+Rishika: Search, Filter, Bookmark
+Responsibilities:
+
+Build SearchBar.jsx and FilterPanel.jsx
+
+Implement:
+
+Search by title/body
+
+Filter by tag, author
+
+Combined search + filter
+
+Add bookmark feature with localStorage
+
+“View Bookmarked” toggle
+
+Integrate like/bookmark buttons into modal view
+
+Files:
+/components/SearchBar.jsx
+/components/FilterPanel.jsx
+(localStorage utils if needed)
+------------------------------------------------------------------
+Chhavi Sharma: Theme, State Context & Styling
+Responsibilities:
+
+Build ThemeToggle.jsx and ThemeContext.js
+
+Implement dark mode:
+
+Store preference in localStorage
+
+Apply theme using useEffect
+
+Make the UI fully responsive with Tailwind CSS or plain CSS
+
+Optional: Add framer-motion animations and toasts
+
+Files:
+/components/ThemeToggle.jsx
+/context/ThemeContext.js
+/global styles / Tailwind setup
+
+🔄 Integration Plan
+Use a shared PostContext or prop drilling to pass post state if needed.
+Agree on post and comment object shape across components.
+Regularly merge branches to avoid integration hell.
+Use App.jsx and pages/Home.jsx as the main wire-up point for all components
