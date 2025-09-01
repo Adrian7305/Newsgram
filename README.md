@@ -55,25 +55,11 @@ cd Newsgram
 
 3. **Configure environment variables**
    Create a `.env` file in the backend directory:
-   ```
-   MONGO_URI=mongodb://localhost:27017/newsgram
-   PORT=5000
-   ```
-   
-   For MongoDB Atlas, use your connection string:
-   ```
-   MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/newsgram
-   ```
 
 4. **Start MongoDB**
    - **Local MongoDB**: Start your local MongoDB service
    - **MongoDB Atlas**: Your cluster should already be running
-
-5. **Seed the database** (Optional)
-   ```bash
-   node seedData.js
-   ```
-
+   
 6. **Start the backend server**
    ```bash
    # Development mode
